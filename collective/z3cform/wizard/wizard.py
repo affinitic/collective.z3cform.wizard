@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 A simple wizard for z3c.form that keeps values in the session
 until the wizard is finished.
@@ -23,14 +24,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 """
 
-import zope.component
-from zope.interface import implements
-from z3c.form import button, field, form, interfaces, group
 from Products.statusmessages.interfaces import IStatusMessage
+from z3c.form import button, field, form, interfaces, group
+from zope.interface import implements
+
+import zope.component
 
 from collective.z3cform.wizard import utils
-from collective.z3cform.wizard.interfaces import IWizard, IStep
 from collective.z3cform.wizard.i18n import MessageFactory as _
+from collective.z3cform.wizard.interfaces import IWizard, IStep
 
 
 try:
@@ -90,7 +92,7 @@ class Step(utils.OverridableTemplate, form.Form):
 
     def getContent(self):
         return self.request.SESSION[self.wizard.sessionKey].setdefault(
-                self.prefix, {})
+            self.prefix, {})
 
     def applyChanges(self, data):
         content = self.getContent()
@@ -167,7 +169,7 @@ class Wizard(utils.OverridableTemplate, form.Form):
         # initialize session
         sessionKey = self.sessionKey
         # PEP8 complaints but TransientObject does not implement __contains__
-        if not self.request.SESSION.has_key(sessionKey):
+        if sessionKey not in self.request.SESSION:
             self.request.SESSION[sessionKey] = {}
         # Reset session if we came from a URL different from that of the wizard
         # unless it's the URL that's used during z3cform inline validation.

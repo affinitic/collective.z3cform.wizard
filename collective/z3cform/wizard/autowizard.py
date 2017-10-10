@@ -1,17 +1,19 @@
-from collective.z3cform.wizard import wizard
+# -*- coding: utf-8 -*-
 from plone.autoform.base import AutoFields
 from plone.z3cform.traversal import FormWidgetTraversal
 from zope.component import adapts
 from zope.publisher.interfaces.browser import IBrowserRequest
 
+from collective.z3cform.wizard import wizard
+
 
 class AutoWizard(wizard.Wizard, AutoFields):
     """Wizard based on a plone.autoform schema.
-    
+
     Steps will be automatically generated from the schema's fieldsets.
     """
     schema = None
-    
+
     def createStepsFromGroups(self):
         steps = []
         for g in self.groups:

@@ -1,20 +1,22 @@
-import doctest
-import unittest
+# -*- coding: utf-8 -*-
 
-from zope.testing.doctest import DocFileSuite
+from z3c.form.datamanager import DictionaryField
+from zope.annotation.interfaces import IAttributeAnnotatable
 from zope.component import testing, provideAdapter
 from zope.configuration import xmlconfig
 from zope.interface import implements
-from zope.annotation.interfaces import IAttributeAnnotatable
-import z3c.form.testing
-import plone.z3cform.tests
+from zope.testing.doctest import DocFileSuite
+
 import Products.statusmessages
-import zope.component
-import zope.security
-import zope.i18n
-import z3c.form
-from z3c.form.datamanager import DictionaryField
 import ZPublisher
+import doctest
+import plone.z3cform.tests
+import unittest
+import z3c.form
+import z3c.form.testing
+import zope.component
+import zope.i18n
+import zope.security
 
 
 def setUp(test):
@@ -54,7 +56,7 @@ def test_suite():
             tearDown=testing.tearDown,
             optionflags=(doctest.NORMALIZE_WHITESPACE | doctest.ELLIPSIS),
             globs=globals(),
-            )
+        )
         for file in files]
     return unittest.TestSuite(suites)
 
