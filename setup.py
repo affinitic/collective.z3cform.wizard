@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from setuptools import setup, find_packages
 import os
 
@@ -24,8 +25,7 @@ setup(name='collective.z3cform.wizard',
       keywords='z3c.form wizard session',
       author='David Glick',
       author_email='davidglick@groundwire.org',
-      url=(
-        'http://svn.plone.org/svn/collective/collective.z3cform.wizard/trunk'),
+      url='https://github.com/collective/collective.z3cform.wizard/',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['collective', 'collective.z3cform'],
