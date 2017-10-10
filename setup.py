@@ -7,8 +7,8 @@ version = '1.4.9dev'
 DOCTESTS_PATH = os.path.join('collective', 'z3cform', 'wizard')
 
 long_description = '\n'.join([
-    open('README.txt').read(),
-    open('CHANGES.txt').read(),
+    open('README.rst').read(),
+    open('CHANGES.rst').read(),
     open(os.path.join(DOCTESTS_PATH, 'wizard.txt')).read(),
     open(os.path.join(DOCTESTS_PATH, 'dynamic_wizard.txt')).read(),
 ])
