@@ -24,7 +24,11 @@ setup(
     long_description=long_description,
     classifiers=[
         'Development Status :: 5 - Production/Stable',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 2.7',
         'Framework :: Zope2',
+        'Framework :: Plone',
+        'Framework :: Plone :: 4.3',
         'License :: OSI Approved :: GNU General Public License (GPL)',
     ],
     keywords='z3c.form wizard session',
