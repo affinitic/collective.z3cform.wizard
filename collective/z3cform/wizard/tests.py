@@ -14,6 +14,7 @@ import plone.z3cform.tests
 import unittest
 import z3c.form
 import z3c.form.testing
+import zope.browserresource
 import zope.component
 import zope.i18n
 import zope.security
@@ -28,6 +29,7 @@ def setUp(test):
     xmlconfig.XMLConfig('meta.zcml', zope.security)()
     xmlconfig.XMLConfig('meta.zcml', zope.i18n)()
     xmlconfig.XMLConfig('meta.zcml', z3c.form)()
+    xmlconfig.XMLConfig('meta.zcml', zope.browserresource)()
     xmlconfig.XMLConfig('configure.zcml', zope.i18n)()
     xmlconfig.XMLConfig('configure.zcml', z3c.form)()
     xmlconfig.XMLConfig('i18n.zcml', ZPublisher)()
