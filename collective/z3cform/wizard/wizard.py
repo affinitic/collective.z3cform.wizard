@@ -27,12 +27,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 from Products.statusmessages.interfaces import IStatusMessage
 from z3c.form import button, field, form, interfaces, group
 from zope.interface import implements
+from zope.component import getMultiAdapter
 
 import zope.component
 
 from collective.z3cform.wizard import utils
 from collective.z3cform.wizard.i18n import MessageFactory as _
 from collective.z3cform.wizard.interfaces import IWizard, IStep
+from collective.z3cform.wizard.interfaces import IStepCondition
 
 
 try:
@@ -79,6 +81,7 @@ class Step(utils.OverridableTemplate, form.Form):
     description = u""
     wizard = None
     completed = True
+    condition = None
 
     @property
     def available(self):
@@ -198,6 +201,14 @@ class Wizard(utils.OverridableTemplate, form.Form):
     def updateActiveSteps(self):
         self.activeSteps = []
         for step in self.steps:
+            if step.condition is not None:
+                condition = getMultiAdapter(
+                    (self.context, self.request, self),
+                    IStepCondition,
+                    name=step.condition,
+                )
+                if condition.validate() is False:
+                    continue
             step = step(self.context, self.request, self)
             self.activeSteps.append(step)
 
@@ -227,7 +238,7 @@ class Wizard(utils.OverridableTemplate, form.Form):
 
     @property
     def onLastStep(self):
-        return self.currentIndex == len(self.steps) - 1
+        return self.currentIndex == len(self.activeSteps) - 1
 
     def showContinue(self):
         return not self.onLastStep

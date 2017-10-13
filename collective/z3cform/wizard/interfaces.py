@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from z3c.form.interfaces import IForm
 from zope.interface import Attribute
+from zope.interface import Interface
 
 
 class IWizard(IForm):
@@ -157,4 +158,12 @@ class IStep(IForm):
     def apply(context):
         """
         Updates a context based on the session data for this step.
+        """
+
+
+class IStepCondition(Interface):
+
+    def validate():
+        """
+        Validates the condition for a step
         """
