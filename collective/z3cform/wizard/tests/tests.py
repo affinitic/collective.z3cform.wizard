@@ -50,7 +50,7 @@ class TestRequest(z3c.form.testing.TestRequest):
 
 
 def test_suite():
-    files = ['wizard.txt', 'dynamic_wizard.txt']
+    files = ['../wizard.txt', '../dynamic_wizard.txt']
     suites = [
         DocFileSuite(
             file,
