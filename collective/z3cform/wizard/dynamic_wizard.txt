@@ -1,8 +1,8 @@
 Dynamic wizard support
 ======================
 
-In some cases, depending on the user's answers to earlier steps of a wizard, 
-later steps are shown or not to the user 
+In some cases, depending on the user's answers to earlier steps of a wizard,
+later steps are shown or not to the user
 
   >>> from zope import schema
   >>> from z3c.form import field, form
@@ -26,7 +26,7 @@ We define fields.
   ...   required=False,
   ...   missing_value=u'',
   ...   )
-  
+
   >>> secondField = schema.Bool(
   ...   __name__ = 'second',
   ...   title=u'Second',
@@ -48,7 +48,7 @@ And wizard steps.
   ...     label = u'Second'
   ...     prefix = 'two'
   ...     fields = field.Fields(secondField)
-  ...         
+  ...
   ...     def load(self, context):
   ...         data = self.getContent()
   ...         data['second'] = True
@@ -69,7 +69,7 @@ submitted in the initial ``ChoiceStep`` and ``SecondChoiceStep``.
 ``steps`` is a computed property instead of a hardcoded sequence.
 
 The class also implements ``showFinish`` method that controls showing (or not) 
-the Finish button.  
+the Finish button.
 
   >>> class DynamicWizard(wizard.Wizard):
   ...     label = u"My dynamic wizard"
@@ -81,7 +81,7 @@ the Finish button.
   ...         if 'choice.widgets.choice' in self.request.form:
   ...             choice = unicode(self.request.form['choice.widgets.choice'][0])
   ...         return choice
-  ... 
+  ...
   ...     @property
   ...     def second_choice(self):
   ...         choice_data = self.session.get('second_choice', {})
@@ -103,8 +103,8 @@ the Finish button.
   ...             return [ChoiceStep, FirstStep]
   ...
   ...     def showFinish(self):
-  ...         return (self.choice == u'first' or self.second_choice) and self.allStepsFinished 
-  
+  ...         return (self.choice == u'first' or self.second_choice) and self.allStepsFinished
+
 Render the form
 ---------------
 
@@ -347,7 +347,7 @@ Choose the other branch of the wizard
     </form>
   </div>
 
-Choose again 
+Choose again
 ------------
 
   >>> request.form = {
@@ -424,7 +424,7 @@ The initial value is actually shown.
     </form>
   </div>
 
-Clear wizard 
+Clear wizard
 ------------
 
   >>> request.form = {

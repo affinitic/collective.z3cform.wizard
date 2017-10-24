@@ -7,7 +7,7 @@ Define a wizard with three steps
 To define a form that uses the wizard, we'll need to define steps.
 These steps represent individual forms that are processed
 sequentially.  Only when the last step is completed will the data be
-submitted through a user-defined method. 
+submitted through a user-defined method.
 
   >>> from zope import schema
   >>> from z3c.form import field, form
@@ -31,11 +31,11 @@ we need to implement the load and apply methods for our step.
   ...     fields = field.Fields(
   ...         schema.TextLine(__name__='name', title=u"Name", required=True),
   ...         schema.TextLine(__name__='beer', title=u'Favorite Beer', required=True))
-  ...         
+  ...
   ...     def load(self, context):
   ...         data = self.getContent()
   ...         data['name'] = 'David'
-  ...         
+  ...
   ...     def apply(self, context):
   ...         data = self.getContent()
   ...         pprint('Name from step 2: %s' % data['name'])
@@ -147,7 +147,7 @@ Submit the first step successfully
             <input id="two-widgets-name" name="two.widgets.name"
                    class="text-widget required textline-field"
                    value="David" type="text" />
-          </div>  
+          </div>
         </div>
         <div class="field">
           <label for="two-widgets-beer">
@@ -161,7 +161,7 @@ Submit the first step successfully
             <input id="two-widgets-beer" name="two.widgets.beer"
                    class="text-widget required textline-field"
                    value="" type="text" />
-          </div>  
+          </div>
         </div>
       <div class="formControls wizard-buttons">
         <input id="form-buttons-continue" name="form.buttons.continue"
