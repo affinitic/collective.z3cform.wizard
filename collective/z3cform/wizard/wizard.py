@@ -172,7 +172,7 @@ class Wizard(utils.OverridableTemplate, form.Form):
         # initialize session
         sessionKey = self.sessionKey
         # PEP8 complaints but TransientObject does not implement __contains__
-        if sessionKey not in self.request.SESSION:
+        if not self.request.SESSION.has_key(sessionKey):  # NOQA
             self.request.SESSION[sessionKey] = {}
         # Reset session if we came from a URL different from that of the wizard
         # unless it's the URL that's used during z3cform inline validation.
