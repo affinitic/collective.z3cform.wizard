@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.4.9 (unreleased)
-------------------
+1.4.9a1 (2017-11-13)
+--------------------
 
 * Add the possibility to define a condition on a step
   [mpeeters]

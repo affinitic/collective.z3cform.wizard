@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.4.9dev'
+version = '1.4.9a1'
 
 DOCTESTS_PATH = os.path.join('collective', 'z3cform', 'wizard')
 
