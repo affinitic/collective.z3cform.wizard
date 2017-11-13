@@ -4,6 +4,9 @@ Changelog
 1.4.9 (unreleased)
 ------------------
 
+* Add the possibility to define a condition on a step
+  [mpeeters]
+
 * Add dutch translation
   [mpeeters]
 
